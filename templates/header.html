@@ -3,52 +3,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-        <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TechZone</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <style>
         html, body {
             height: 100%;
-            background-color: #212529 !important;
+            margin: 0;
+            padding: 0;
+            background-color: #1bb8bd;
+            display: flex;
+            flex-direction: column;
         }
-        h1, h2, p {
+        main {
+            flex: 1 0 auto;
+        }
+        footer {
+            flex-shrink: 0;
+            background-color: rgb(33, 37, 41);
+        }
+        h1, h2, h3, h4, p {
             color: #ffffff;
         }
         .card h1, .card h2, .card p {
             color: #000000;
         }
-        </style>
+        .user-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 12px;
+            user-select: none;
+            white-space: nowrap;
+        }
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
 </head>
-    <body style="scroll-behavior: auto !important;">
-    <header data-bs-theme="dark">
-        <div class="collapse text-bg-dark" id="navbarHeader">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                        <h4>О нас</h4>
-                        <p>...</p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                        <h4>Ав</h4>
-                        <ul class="list-unstyled">
-                            <li><a href="" class="text-white">Войти</a></li>
-                        </ul>
-                    </div>
+<body style="scroll-behavior: auto !important;">
+<header data-bs-theme="dark">
+    <div class="collapse text-bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4>О нас</h4>
+                    <p>TechZone – это современный магазин техники, где вы найдете лучшие гаджеты, электронику и компьютерные комплектующие. Мы предлагаем только проверенные бренды, гарантию качества и выгодные цены.</p>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4>Авторизация</h4>
+                    <ul class="list-unstyled">
+                        <li>
+                            <img src="/media/signin.svg" alt="logo" style="height: 24px; margin-right: 10px;" />
+                            <a href="/signin/" class="text-white">Войти</a>
+                        </li>
+                        <li>
+                            <img src="/media/registration.png" alt="logo" style="height: 24px; margin-right: 10px;" />
+                            <a href="/register/" class="text-white">Зарегистрироваться</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a href="#" class="navbar-brand d-flex align-items-center">
-                    <img src="/media/logo.png" alt="logo">
-                    <strong>TechZone</strong>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
+    </div>
+
+    <div class="navbar navbar-dark bg-dark shadow-sm position-relative">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a href="/" class="navbar-brand align-items-center">
+            <img src="/media/logo.svg" alt="logo" style="height: 24px; margin-right: 5px;">
+            <strong>TechZone</strong>
+        </a>
+
+        {{ if .Username }}
+        <div class="user-name d-flex align-items-center">
+            Привет, <span style="margin-left: 6px; margin-right: 12px;">{{ .Username }}</span>
+            <form method="POST" action="/logout/">
+                <button type="submit" class="btn btn-sm btn-outline-light">Выйти</button>
+            </form>
         </div>
-    </header>
-    
+        {{ else }}
+        <button class="navbar-toggler navbar-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {{ end }}
+    </div>
+</div>
+
+</header>
+
 {{ end }}

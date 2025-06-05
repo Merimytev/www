@@ -1,0 +1,30 @@
+{{ define "signin" }}
+{{ template "header" }}
+
+<main class="container mt-5">
+  <h1 class="text-white">Вход</h1>
+
+  {{ if eq .Success "1" }}
+    <div class="alert alert-success">Вы успешно вошли!</div>
+  {{ end }}
+    {{ if .Error }}
+    <div class="alert alert-danger" role="alert">
+        {{ .Error }}
+    </div>
+    {{ end }}
+    
+  <form method="POST" action="/signin/">
+    <div class="mb-3">
+        <label for="username" class="form-label text-white">Имя пользователя</label>
+        <input type="text" class="form-control" placeholder="Имя" id="username" name="username" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label text-white">Пароль</label>
+        <input type="password" class="form-control" placeholder="Пароль" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+  </form>
+</main>
+
+{{ template "footer" }}
+{{ end }}

@@ -1,102 +1,33 @@
 {{ define "index" }}
+{{ template "header" . }}
 
-{{ template "header" }}
-
-    <main>
-        <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Наши товары</h1>
-                    <p class="desc">TechZone — ваш надежный источник современной техники и гаджетов. У нас вы найдете всё — от новейших смартфонов и умных устройств до аксессуаров и электроники для дома. 
-                        Качество, инновации и отличный сервис — это то, что делает TechZone вашим выбором №1.</p>
-                        <a href="#" class="btn btn-primary my-2">Войти</a>
-                        <a href="#" class="btn btn-secondary my-2">Зарегистрироваться</a>
-                    </p>
+<style>
+    .container.mt-5 {
+        margin-bottom: 30px;
+    }
+</style>
+<main class="container mt-5">
+    <h1 class="text-white mb-4" style="text-align: center;">Каталог товаров</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {{ range .Products }}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ .Name }}</h5>
+                    <img src="/media/{{ .Image }}" alt="{{ .Name }}" style="max-width: 100%; height: auto;">
+                    <p class="card-text">{{ .Description }}</p>
+                    <a href="/product/{{ .ID }}" class="btn btn-primary">Подробнее</a>
                 </div>
-            </div>
-        </section>
-        <div class="album py-5 bg-body-tertiary">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div class="col">
-                        <div class="card">
-                            <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg">
-                                <title>good</title>
-                                <rect width="100%" height="100%" fill="#55595c" style="--darkreader-inline-fill: var(--darkreader-background-55595c, #43484b);" data-darkreader-inline-fill=""></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em" style="--darkreader-inline-fill: var(--darkreader-text-eceeef, #dddad6);" data-darkreader-inline-fill="">Превью</text>
-                            </svg>
-                            <div class="card-body">
-                            <!-- Go шаблонизатор -->
-                            {{ if eq .Name "Bob" }}
-                            <p>Привет Боб!</p>
-                            {{ else }}
-                            <p>Ты не боб!</p>
-                            {{ end }}
-
-                                {{ range .Hobbies }}
-                                    <p><b>{{ . }}</b></p>
-                                {{ else }}
-                                    <p><b> У человека нет хобби </b></p>
-                                {{ end }}
-
-                            <p>Пользователь: {{ .Name }}</p>
-                            <p>Возраст: {{ .Age }}</p>
-                            <p>Деньги: {{ .Money }}</p>
-
-                                <p class="card-text">Современный смартфон с ярким дисплеем, мощным процессором и долгим временем работы аккумулятора — идеальный выбор для работы и развлечений.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
-                                    </div>
-                                    <small class="text-body-secondary">9 минут назад</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg">
-                                <title>good</title>
-                                <rect width="100%" height="100%" fill="#55595c" style="--darkreader-inline-fill: var(--darkreader-background-55595c, #43484b);" data-darkreader-inline-fill=""></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em" style="--darkreader-inline-fill: var(--darkreader-text-eceeef, #dddad6);" data-darkreader-inline-fill="">Превью</text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">Современный смартфон с ярким дисплеем, мощным процессором и долгим временем работы аккумулятора — идеальный выбор для работы и развлечений.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
-                                    </div>
-                                    <small class="text-body-secondary">9 минут назад</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <svg aria-label="Placeholder: Thumbnail" class="bd-placeholder-img card-img-top" height="225" preserveAspectRatio="xMidYMid slice" role="img" width="100%" xmlns="http://www.w3.org/2000/svg">
-                                <title>good</title>
-                                <rect width="100%" height="100%" fill="#55595c" style="--darkreader-inline-fill: var(--darkreader-background-55595c, #43484b);" data-darkreader-inline-fill=""></rect>
-                                <text x="50%" y="50%" fill="#eceeef" dy=".3em" style="--darkreader-inline-fill: var(--darkreader-text-eceeef, #dddad6);" data-darkreader-inline-fill="">Превью</text>
-                            </svg>
-                            <div class="card-body">
-                                <p class="card-text">Современный смартфон с ярким дисплеем, мощным процессором и долгим временем работы аккумулятора — идеальный выбор для работы и развлечений.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
-                                    </div>
-                                    <small class="text-body-secondary">9 минут назад</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-footer">
+                    <strong>{{ printf "%.2f" .Price }} ₸</strong>
                 </div>
             </div>
         </div>
-    </main>
+        {{ else }}
+        <p class="text-white">Товаров пока нет.</p>
+        {{ end }}
+    </div>
+</main>
 
-{{ template "footer" }}
-
+{{ template "footer" . }}
 {{ end }}

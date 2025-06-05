@@ -1,0 +1,65 @@
+{{ define "product" }}
+{{ template "header" . }}
+
+<style>
+    .product-container {
+        max-width: 800px;
+        margin: 50px auto;
+    }
+
+    .product-card {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        background-color: #ffffff;
+        overflow: hidden;
+    }
+
+    .product-title {
+        text-align: center;
+        padding: 20px 10px 10px 10px;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .product-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .product-body {
+        padding: 20px;
+    }
+
+    .product-body p {
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1bb8bd;
+    }
+</style>
+
+<main class="container product-container">
+    {{ with index .Products 0 }}
+    <div class="product-card">
+        <h2 class="product-title">{{ .Name }}</h2>
+        <img src="/media/{{ .Image }}" alt="{{ .Name }}" class="product-img">
+        <div class="product-body">
+            <p>{{ .Description }}</p>
+            <p class="product-price">{{ printf "%.2f" .Price }} ₸</p>
+        </div>
+    </div>
+    {{ else }}
+    <p class="text-white">Товар не найден.</p>
+    {{ end }}
+</main>
+
+{{ template "footer" . }}
+{{ end }}

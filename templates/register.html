@@ -1,0 +1,20 @@
+{{ define "register" }}
+{{ template "header" }}
+
+<main class="container py-5">
+  <h2>Регистрация</h2>
+
+  {{ if eq .Success "1" }}
+    <div class="alert alert-success">Вы успешно зарегистрировались!</div>
+  {{ end }}
+
+  <form method="POST" action="/register/">
+    <input class="form-control" name="name" placeholder="Имя"><br>
+    <input class="form-control" name="email" placeholder="Email"><br>
+    <input class="form-control" type="password" name="password" placeholder="Пароль"><br>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  </form>
+</main>
+
+{{ template "footer" }}
+{{ end }}
